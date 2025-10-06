@@ -3,7 +3,7 @@ pipeline {
     agent {
         docker {
             image 'mcr.microsoft.com/playwright:latest' 
-            args '--ipc=host -u root' 
+            args '--ipc=host -u root -v $(pwd):/usr/src/app   -w /usr/src/app' 
         }
     }
 
@@ -30,11 +30,11 @@ pipeline {
             }
         }
 
-        stage('Publish Reports') {
-            steps {
-                junit 'test-results/**/*.xml' 
-                archiveArtifacts artifacts: 'playwright-report/**/*', fingerprint: true
-            }
-        }
+        // stage('Publish Reports') {
+        //     steps {
+        //         junit 'test-results/**/*.xml' 
+        //         archiveArtifacts artifacts: 'playwright-report/**/*', fingerprint: true
+        //     }
+        // }
     }
 }
