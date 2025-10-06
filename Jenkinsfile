@@ -24,14 +24,14 @@ pipeline {
             }
         }
 
-        stage('Debug workspace') {
-            steps {
-                sh 'pwd; node -v; npx playwright --version'
-                sh 'ls -la'
-                sh 'ls -la tests || true'
-                sh 'npx playwright test --list --reporter=line || true'
-            }
-        }
+        // stage('Debug workspace') {
+        //     steps {
+        //         sh 'pwd; node -v; npx playwright --version'
+        //         sh 'ls -la'
+        //         sh 'ls -la tests || true'
+        //         sh 'npx playwright test --list --reporter=line || true'
+        //     }
+        // }
 
         stage('Run Playwright Tests') {
             steps {
@@ -39,11 +39,11 @@ pipeline {
             }
         }
 
-        // stage('Publish Reports') {
-        //     steps {
-        //         junit 'test-results/**/*.xml' 
-        //         archiveArtifacts artifacts: 'playwright-report/**/*', fingerprint: true
-        //     }
-        // }
+        stage('Publish Reports') {
+            steps {
+                junit 'test-results/**/*.xml' 
+                archiveArtifacts artifacts: 'playwright-report/**/*', fingerprint: true
+            }
+        }
     }
 }
