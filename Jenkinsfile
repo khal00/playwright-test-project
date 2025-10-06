@@ -3,7 +3,7 @@ pipeline {
     agent {
         docker {
             image 'mcr.microsoft.com/playwright:latest' 
-            args '--ipc=host -u root -v $(pwd):/usr/src/app   -w /usr/src/app' 
+            args '--ipc=host -u root' 
         }
     }
 
@@ -21,6 +21,15 @@ pipeline {
             steps {
                 // Now that the code is in the workspace, this can run
                 sh 'npm ci'
+            }
+        }
+
+        stage('Debug workspace') {
+            steps {
+                sh 'pwd; node -v; npx playwright --version'
+                sh 'ls -la'
+                sh 'ls -la tests || true'
+                sh 'npx playwright test --list --reporter=line || true'
             }
         }
 
