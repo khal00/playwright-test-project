@@ -24,15 +24,6 @@ pipeline {
             }
         }
 
-        // stage('Debug workspace') {
-        //     steps {
-        //         sh 'pwd; node -v; npx playwright --version'
-        //         sh 'ls -la'
-        //         sh 'ls -la tests || true'
-        //         sh 'npx playwright test --list --reporter=line || true'
-        //     }
-        // }
-
         stage('Run Playwright Tests') {
             steps {
                 sh 'npx playwright test --reporter=junit,html'
