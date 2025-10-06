@@ -10,9 +10,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'github-acces-t', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
-                sh 'git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/khal00/playwright-test-project.git .'
-                }
+                // withCredentials([usernamePassword(credentialsId: 'github-acces-t', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
+                // sh 'git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/khal00/playwright-test-project.git .'
+                // }
+                checkout scm
             }
         }
         
