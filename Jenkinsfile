@@ -8,11 +8,11 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
-                // The 'checkout scm' step automatically pulls the code
-                // configured in the job's 'Pipeline' section (see Step 2)
-                checkout scm
+                withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
+                sh 'git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/khal00/playwright-test-project.git .'
+                }
             }
         }
         
