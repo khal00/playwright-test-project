@@ -14,6 +14,12 @@ pipeline {
                 // sh 'git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/khal00/playwright-test-project.git .'
                 // }
                 sh 'echo chekout scm'
+                sh """
+                    cd /usr/src/app
+                    pwd
+                    ls
+                  """
+
                 checkout scm
             }
         }
