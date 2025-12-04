@@ -18,13 +18,15 @@ pipeline {
             }
         }
         
-        // stage('Install Dependencies') {
-        //     steps {
-        //         // Now that the code is in the workspace, this can run
-        //         sh 'echo install dependecies'
-        //         sh 'npm ci'
-        //     }
-        // }
+        stage('Install Dependencies') {
+            steps {
+                sh "sudo chown -R 1000:1000 /var/jenkins_home/workspace/PW-test-pipe"
+
+                // Now that the code is in the workspace, this can run
+                sh 'echo install dependecies'
+                sh 'npm ci'
+            }
+        }
 
         stage('Run Playwright Tests') {
             steps {
