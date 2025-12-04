@@ -18,13 +18,13 @@ pipeline {
             }
         }
         
-        stage('Install Dependencies') {
-            steps {
-                // Now that the code is in the workspace, this can run
-                sh 'echo install dependecies'
-                sh 'npm ci'
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         // Now that the code is in the workspace, this can run
+        //         sh 'echo install dependecies'
+        //         sh 'npm ci'
+        //     }
+        // }
 
         stage('Run Playwright Tests') {
             steps {
