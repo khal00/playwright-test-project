@@ -27,6 +27,11 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Now that the code is in the workspace, this can run
+                              sh """
+                    cd /usr/src/app
+                    pwd
+                    ls
+                  """
                 sh 'echo install dependecies'
                 sh 'npm ci'
             }
