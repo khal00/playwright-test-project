@@ -2,7 +2,7 @@ pipeline {
     // Define the Playwright Docker image as the agent for the whole pipeline
     agent {
         docker {
-            image 'mcr.microsoft.com/playwright:v1.55.1-jammy' 
+            image 'playwright-agent:1.2' 
             args '--ipc=host -u root' 
         }
     }
