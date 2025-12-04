@@ -3,7 +3,7 @@ pipeline {
     agent {
         docker {
             image 'pwagent:1.0' 
-            args '--ipc=host -u root' 
+            args '--ipc=host' 
         }
     }
 
