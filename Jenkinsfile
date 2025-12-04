@@ -14,12 +14,6 @@ pipeline {
                 // sh 'git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/khal00/playwright-test-project.git .'
                 // }
                 sh 'echo chekout scm'
-                sh """
-                    cd /usr/src/app
-                    pwd
-                    ls
-                  """
-
                 checkout scm
             }
         }
@@ -27,11 +21,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Now that the code is in the workspace, this can run
-                              sh """
-                    cd /usr/src/app
-                    pwd
-                    ls
-                  """
                 sh 'echo install dependecies'
                 sh 'npm ci'
             }
