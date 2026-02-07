@@ -37,12 +37,11 @@ pipeline {
                 sh 'npx playwright test --reporter=junit,html'
             }
         }
-
-        stage('Publish Reports') {
-            steps {
-                junit 'test-results/**/*.xml' 
-                archiveArtifacts artifacts: 'playwright-report/**/*', fingerprint: true
-            }
+    }
+    post {
+        always {
+            junit allowEmptyResults: true, testResults: 'test-results/**/*.xml'
+            archiveArtifacts artifacts: 'playwright-report/**/*', fingerprint: true, allowEmptyArchive: true
         }
     }
 }
