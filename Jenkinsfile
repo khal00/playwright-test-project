@@ -40,7 +40,7 @@ pipeline {
     }
     post {
         always {
-            junit allowEmptyResults: true, testResults: 'test-results/**/*.xml'
+            junit allowEmptyResults: true, testResults: 'test-results/junit-results.xml'
             archiveArtifacts artifacts: 'playwright-report/**/*', fingerprint: true, allowEmptyArchive: true
         }
     }
