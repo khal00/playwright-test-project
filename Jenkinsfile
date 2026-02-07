@@ -34,7 +34,7 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 sh 'echo run tests'
-                sh 'npx playwright test --reporter=junit,html'
+                sh 'npx playwright test'
             }
         }
     }
