@@ -8,6 +8,11 @@ pipeline {
     }
 
     stages {
+        stage('Clean') {
+            steps {
+                cleanWs()
+            }
+        }
         stage('Checkout') {
             steps {
                 // withCredentials([usernamePassword(credentialsId: 'github-acces-t', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
